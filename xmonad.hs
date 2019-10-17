@@ -4,11 +4,18 @@ import XMonad.Hooks.SetWMName
 import XMonad.Actions.CycleWS
 -- import XMonad.Actions.CycleRecentWS
 
+myManageHook = composeAll
+  [ className =? "Gimp"   --> doFloat
+  , className =? "Vlc"    --> doFloat
+  , className =? "Pidgin" --> doFloat
+  ]
+
 main :: IO ()
 main = xmonad $ defaultConfig
    { keys = C.customKeys delKeys insKeys
    , modMask = mod4Mask
    , startupHook = setWMName "LG3D"
+   , manageHook  = myManageHook <+> manageHook defaultConfig
    }
   where
     delKeys :: XConfig l -> [(KeyMask, KeySym)]

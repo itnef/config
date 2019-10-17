@@ -1,0 +1,3 @@
+# Re-install all GHC libraries under Arch / Manjaro
+sudo pacman -Sv $(pacman -Qu | grep haskell | perl -ne 's/ .*//g;print')
+

@@ -1,5 +1,9 @@
 (require 'package)
 
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -9,13 +13,24 @@
    (quote
     ("--include-path=." "--include-path=/home/user/software/agda/lib/prim/Agda" "--include-path=/home/user/software/agda/lib/stdlib")))
  '(blink-cursor-mode nil)
+ '(c-basic-offset 4)
  '(column-number-mode t)
  '(inhibit-startup-screen t)
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(package-selected-packages (quote (auto-complete haskell-mode))))
+ '(package-selected-packages
+   (quote
+    (rainbow-delimiters ensime markdown-preview-mode markdown-mode auto-complete haskell-mode))))
+
+; (require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 
 (package-initialize)
 
@@ -39,3 +54,4 @@
   (unless (minibufferp (current-buffer))
     (auto-complete-mode 1)))
 (global-auto-complete-mode t)
+(put 'scroll-left 'disabled nil)
