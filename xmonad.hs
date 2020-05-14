@@ -13,7 +13,7 @@ myManageHook = composeAll
 main :: IO ()
 main = xmonad $ defaultConfig
    { keys = C.customKeys delKeys insKeys
-   , modMask = mod4Mask
+--   , modMask = mod4Mask
    , startupHook = setWMName "LG3D"
    , manageHook  = myManageHook <+> manageHook defaultConfig
    }

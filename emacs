@@ -15,6 +15,7 @@
  '(blink-cursor-mode nil)
  '(c-basic-offset 4)
  '(column-number-mode t)
+ '(electric-indent-mode nil)
  '(inhibit-startup-screen t)
  '(package-archives
    (quote
@@ -22,7 +23,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (rainbow-delimiters ensime markdown-preview-mode markdown-mode auto-complete haskell-mode))))
+    (intero ghc-imported-from ghc flymake-hlint flymake-haskell-multi flycheck-haskell ac-haskell-process rainbow-delimiters ensime markdown-preview-mode markdown-mode auto-complete haskell-mode))))
 
 ; (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -55,3 +56,8 @@
     (auto-complete-mode 1)))
 (global-auto-complete-mode t)
 (put 'scroll-left 'disabled nil)
+
+(set-variable (quote scheme-program-name) "gambitc")
+
+
+(add-hook ’haskell-mode-hook ’interactive-haskell-mode)
