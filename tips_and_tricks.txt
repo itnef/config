@@ -1,3 +1,4 @@
 # Re-install all GHC libraries under Arch / Manjaro
 sudo pacman -Sv $(pacman -Qu | grep haskell | perl -ne 's/ .*//g;print')
+sudo pacman -Sv $(pacman -Q --color=never | egrep "haskell|ghc|xmonad" | perl -ne 's/ .*//g;print')
 
