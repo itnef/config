@@ -1,4 +1,10 @@
+
+
 (require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -23,7 +29,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (intero ghc-imported-from ghc flymake-hlint flymake-haskell-multi flycheck-haskell ac-haskell-process rainbow-delimiters ensime markdown-preview-mode markdown-mode auto-complete haskell-mode))))
+    (z3-mode intero ghc-imported-from ghc flymake-hlint flymake-haskell-multi flycheck-haskell ac-haskell-process rainbow-delimiters ensime markdown-preview-mode markdown-mode auto-complete haskell-mode))))
 
 ; (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -59,5 +65,4 @@
 
 (set-variable (quote scheme-program-name) "gambitc")
 
-
-(add-hook ’haskell-mode-hook ’interactive-haskell-mode)
+; (add-hook ’haskell-mode-hook ’interactive-haskell-mode)

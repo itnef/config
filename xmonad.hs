@@ -2,7 +2,15 @@ import XMonad
 import qualified XMonad.Util.CustomKeys as C
 import XMonad.Hooks.SetWMName
 import XMonad.Actions.CycleWS
+-- Guide: https://betweentwocommits.com/blog/xmonad-layouts-guide
+import XMonad.Layout.Grid
+import XMonad.Layout.Spiral
+import XMonad.Layout.ThreeColumns
+-- https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Layout-Spiral.html
 -- import XMonad.Actions.CycleRecentWS
+-- The cycling behvaiour of Alt-Tab (as opposed to most recent first) is extremely annoying and very nearly a deal-breaker.
+-- No one seems to be aware of the problem, a web search turns up nothing useful. Either ask the question on stackexchange,
+-- find out how to implement it or use https://github.com/sagb/alttab ?
 
 myManageHook = composeAll
   [ className =? "Gimp"   --> doFloat
@@ -10,12 +18,15 @@ myManageHook = composeAll
   , className =? "Pidgin" --> doFloat
   ]
 
+myLayout = Tall 1 (3/100) (1/2) ||| Full ||| Mirror (Tall 1 (3/100) (3/5)) ||| Grid ||| spiral (6/7) ||| ThreeCol 1 (3/100) (1/2)
+
 main :: IO ()
 main = xmonad $ defaultConfig
    { keys = C.customKeys delKeys insKeys
 --   , modMask = mod4Mask
    , startupHook = setWMName "LG3D"
    , manageHook  = myManageHook <+> manageHook defaultConfig
+   , layoutHook  = myLayout
    }
   where
     delKeys :: XConfig l -> [(KeyMask, KeySym)]
