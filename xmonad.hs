@@ -31,7 +31,8 @@ main = xmonad $ defaultConfig
    }
   where
     delKeys :: XConfig l -> [(KeyMask, KeySym)]
-    delKeys XConfig { modMask = modm } = [ (modm, xK_b) ]
+    delKeys XConfig { modMask = modm } = [ (modm, xK_b), (modm .|. shiftMask, xK_q -- that's the last time you quit on me because Ctrl-Shift-Q was accidentally pressed
+      )]
 -- , (modm, xK_Tab) ]
 
     insKeys :: XConfig l -> [((KeyMask, KeySym), X ())]
