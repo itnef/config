@@ -25,7 +25,8 @@
                                             "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Word$",
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -52,7 +53,8 @@
                                             "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Word$",
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -79,7 +81,8 @@
                                             "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Word$",
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -112,7 +115,8 @@
                                             "^com\\.microsoft\\.Excel$",
                                             "^com\\.microsoft\\.Powerpoint$",
                                             "^com\\.microsoft\\.Word$",
-                                            "^org\\.mozilla\\.firefox$"
+                                            "^org\\.mozilla\\.firefox$",
+                                            "^com\\.google\\.Chrome$"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -134,7 +138,205 @@
                                 "type": "basic"
                             }
                         ]
-                    }
+                    },
+                    {
+                        "description": "Restore delete-word",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "delete_or_backspace",
+                                    "modifiers": [
+                                        "left_option"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Restore move 1 word",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": [
+                                        "left_option"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Restore move 1 word",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": [
+                                        "left_option"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+{
+                        "description": "Restore select 1 word",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command", "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": [
+                                        "left_option", "left_shift"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Restore select 1 word",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command", "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": [
+                                        "left_option", "left_shift"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+   {
+      "description": "change home key to command + left_arrow",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "home"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "change home key to command + left_arrow while presing shift (selection)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "home",
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "change end key to command + right_arrow",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "end"
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "change end key to command + right_arrow while presing shift (selection)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "end",
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
                 ]
             },
             "devices": [
@@ -181,6 +383,32 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 50475,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 8264,
+                        "vendor_id": 1149
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
