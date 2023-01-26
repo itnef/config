@@ -1,5 +1,8 @@
 import XMonad
 import qualified XMonad.Util.CustomKeys as C
+import XMonad.Actions.SwapWorkspaces
+
+import qualified XMonad.StackSet as W
 import XMonad.Hooks.SetWMName
 import XMonad.Actions.CycleWS
 -- Guide: https://betweentwocommits.com/blog/xmonad-layouts-guide
@@ -16,8 +19,11 @@ import XMonad.Layout.ThreeColumns
 myManageHook = composeAll
   [ className =? "Gimp"   --> doFloat
   , className =? "Vlc"    --> doFloat
+  , className =? "emacs"  --> doFloat
   , className =? "Pidgin" --> doFloat
   ]
+
+myWorkspaces    = ["0", "1","2","3","4","5","6","7","8","9"]
 
 myLayout = Tall 1 (3/100) (1/2) ||| Full ||| Mirror (Tall 1 (3/100) (3/5)) ||| Grid ||| spiral (6/7) ||| ThreeCol 1 (3/100) (1/2)
 
@@ -28,6 +34,7 @@ main = xmonad $ defaultConfig
    , startupHook = setWMName "LG3D"
    , manageHook  = myManageHook <+> manageHook defaultConfig
    , layoutHook  = myLayout
+   , workspaces  = myWorkspaces
    }
   where
     delKeys :: XConfig l -> [(KeyMask, KeySym)]
@@ -43,3 +50,10 @@ main = xmonad $ defaultConfig
 --       , ((modm, xK_grave), cycleRecentWS [] xK_Left xK_Right)
        , ((modm .|. shiftMask, xK_Left), shiftToPrev)
        , ((modm .|. shiftMask, xK_Right), shiftToNext) ]
+      ++ -- switch, move
+      [((m .|. modm, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_0 .. xK_9]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+      ++ -- swap
+      [((modm .|. controlMask, k), windows $ swapWithCurrent i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_0 ..]]
